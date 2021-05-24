@@ -45,7 +45,7 @@ function getJokes(){
 
         for (let joke of response){
             $('#outputDiv').append(`
-            <h3> ${joke.whoseJoke} ${joke.question} ${joke.punchLine} </h3>
+            <h3> ${joke.whoseJoke} ${joke.jokeQuestion} ${joke.punchLine} </h3>
             `)
         }
     })

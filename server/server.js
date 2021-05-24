@@ -44,7 +44,7 @@ app.post('/jokes', (req, res) => {
 
     let newJoke = {
       whoseJoke: whoseJoke,
-      question: question,
+      jokeQuestion: question,
       punchLine: punchLine
     }
 
@@ -54,6 +54,13 @@ app.post('/jokes', (req, res) => {
 
     res.sendStatus(200);
   })
+
+app.get('/jokes', (req, res) => {
+    console.log('Got to /jokes');
+
+    res.send(jokes)
+})
+
 
 // serve back static files
 app.use(express.static('server/public'));
