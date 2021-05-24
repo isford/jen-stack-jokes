@@ -29,7 +29,7 @@ function addJokes(){
         data: newJokes
     }).then(response => {
         console.log('The users joke was', response)
-        //getCalculation();
+        getJokes();
     });
 }
 
