@@ -6,6 +6,8 @@ const PORT = 5000;
 // use bodyParser.urlencoded throughout the app with this:
 app.use(bodyParser.urlencoded({ extended: true }));
 
+
+//Jokes array created for displaying on DOM after page refresh
 let jokes = [
   {
     whoseJoke: "Danny",
@@ -33,7 +35,7 @@ let jokes = [
     punchLine: "It was a shih tzu."
   }
 ];
-
+//POST input from client to server
 app.post('/jokes', (req, res) => {
     console.log('Received from user input', req.body);
 
@@ -41,7 +43,7 @@ app.post('/jokes', (req, res) => {
     let question = req.body.question;
     let punchLine = req.body.punchline;
 
-
+  //create a new object to add to array
     let newJoke = {
       whoseJoke: whoseJoke,
       jokeQuestion: question,
@@ -51,10 +53,10 @@ app.post('/jokes', (req, res) => {
     console.log('The users joke to POST', newJoke)
 
     jokes.push(newJoke);
-
+    //send status code to let client know data was received
     res.sendStatus(200);
   })
-
+//GET to send jokes array to client for display on DOM
 app.get('/jokes', (req, res) => {
     console.log('Got to /jokes');
 

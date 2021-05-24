@@ -7,7 +7,7 @@ function onReady() {
 
     //click event to add jokes to POST to server
     $('#addJokeButton').on('click', addJokes);
-
+    //updates dom to display newest jokes
     getJokes();
 }
 
@@ -40,9 +40,9 @@ function getJokes(){
         url: '/jokes'
     }).then(response => {
         console.log('The jokes array is', response);
-
+        //clears the div so you don't have duplicates
         $('#outputDiv').empty();
-
+        //loops through array and appends all jokes
         for (let joke of response){
             $('#outputDiv').append(`
             <h3> ${joke.whoseJoke} ${joke.jokeQuestion} ${joke.punchLine} </h3>
