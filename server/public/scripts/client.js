@@ -7,6 +7,8 @@ function onReady() {
 
     //click event to add jokes to POST to server
     $('#addJokeButton').on('click', addJokes);
+
+    getJokes();
 }
 
 //add jokes to POST to server
@@ -29,4 +31,22 @@ function addJokes(){
         console.log('The users joke was', response)
         //getCalculation();
     });
+}
+
+//Gets jokes from server array
+function getJokes(){
+    $.ajax({
+        method: 'GET',
+        url: '/jokes'
+    }).then(response => {
+        console.log('The jokes array is', response);
+
+        $('#outputDiv').empty();
+
+        for (let joke of response){
+            $('#outputDiv').append(`
+            <h3> ${joke.whoseJoke} ${joke.question} ${joke.punchLine} </h3>
+            `)
+        }
+    })
 }
